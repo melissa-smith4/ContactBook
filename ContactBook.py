@@ -13,7 +13,7 @@ def create_new_contact(contacts, name, phone, email):
 #This function saves the contacts to the txt file.
 def import_to_file(contacts):
     #Open the txt file in writign mode.
-    with open("contacts.txt", "w") as file:
+    with open("contacts_storage.txt", "w") as file:
         #Iterate through the contacts and write them into the file.
         for name, info in contacts.items():
             file.write(f"{name},{info[0]},{info[1]}\n")
@@ -24,8 +24,8 @@ def import_to_file(contacts):
 def open_from_file():
     contacts = {}
     #Check if a contacts txt file already exists. If so, load them into the contacts dictionary.
-    if os.path.exists("contacts.txt"):
-        with open("contacts.txt", "r") as file:
+    if os.path.exists("contacts_storage.txt"):
+        with open("contacts_storage.txt", "r") as file:
             for line in file:
                 name, phone, email = line.strip().split(",")
                 contacts[name] = [phone, email]
